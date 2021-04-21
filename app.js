@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const staticDir = __dirname + "\\static\\";
 
-app.get('/', (req, res) => res.send('Adorabless!'));
+app.use(express.static(staticDir));
+
+app.get('/', (req, res) => res.sendFile(staticDir + "html\\index.html"));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
